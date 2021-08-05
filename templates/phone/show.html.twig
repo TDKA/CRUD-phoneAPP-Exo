@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PhoneController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+    <h1>Hello to the phone store! ✅</h1>
+
+
+   <div class="card mx-auto" style="width: 20rem;">
+        <img src="{{ asset('uploads/images/phones/') }}{{ phone.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Model: {{phone.modelName}}</h5>
+            <p class="card-text">Description {{phone.description}}</p>
+            <p class="card-text">Stockage: {{phone.stockage}} GB</p>
+            <p class="card-text">Price: {{phone.price}} €</p>
+            <p class="card-text">Manufacturer: {{phone.manufacturer.name}} </p>
+            <small> Release Date: {{phone.createdAt | date('d/m/Y') }} à {{phone.createdAt | date('H:i') }} </small>
+            
+        {% if app.user %}
+        
+            {% if app.user.id is same as(phone.author.id) %}
+
+            {# Edit phone #}
+            <a href= "{{ path('editPhone', {id: phone.id}) }}" class="btn btn-warning">Edit</a>
+            {# Delete phone #}
+            <a href= "{{ path('deletePhone', {id: phone.id}) }}" class="btn btn-danger">Delete</a>
+
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+
+ </div>
+</div>
+{% endblock %}

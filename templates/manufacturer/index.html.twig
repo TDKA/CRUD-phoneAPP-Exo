@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ManufacturerController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+<a href="{{ path('phone') }}" class="btn btn-primary my-3">Return to homepage </a>
+
+<h1 class="text-center my-4">All the manufactures disponible: </h1>
+    <div class="row">
+
+{% for manufacturer in manufacturers %}
+    <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+        <img src="{{ asset('uploads/images/manufacturer/') }}{{ manufacturer.imageLogo }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Manufacturer: {{manufacturer.name}}</h5>
+                <p class="card-text">Description {{manufacturer.description}}</p>
+                <p class="card-text">Origin: {{manufacturer.origin}} </p>
+                <p class="card-text">Address: {{manufacturer.address}} </p>
+                  {# Delete phone #}
+            <a href= "{{ path('deleteManufacturer', {id: manufacturer.id}) }}" class="btn btn-danger">Delete</a>
+            
+            </div>
+        </div>
+    </div>
+{% endfor %}
+   </div>
+</div>
+{% endblock %}

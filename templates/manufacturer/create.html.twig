@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+
+
+{% block body %}
+
+
+<div class="container">
+
+
+    {{ form_start(form) }}
+				
+				{{form_row(form.name)}}
+				{{form_row(form.description)}}
+				{{form_row(form.origin)}}
+				{{form_row(form.address)}}
+				{{form_row(form.imageLogo)}}
+			
+  
+		
+
+				<button type="submit" class="btn btn-primary">
+          ADD
+                 
+                 </button>
+	{{ form_end(form) }} 
+
+
+</div>
+{% endblock %}

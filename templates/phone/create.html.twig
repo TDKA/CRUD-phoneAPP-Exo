@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+
+
+{% block body %}
+
+
+<div class="container">
+
+{% if modeEdition %}
+        <h1 class="mx-auto"> Edit this phone NOW </h1>
+{% else %}
+    <h1 class="mx-auto"> Create new phone NOW </h1>
+{% endif %}
+
+    {{ form_start(form) }}
+				
+				{{form_row(form.modelName)}}
+				{{form_row(form.description)}}
+				{{form_row(form.price)}}
+				{{form_row(form.stockage)}}
+				{{form_row(form.image)}}
+				{{form_row(form.manufacturer)}}
+		
+
+				<button type="submit" class="btn btn-primary">
+                {% if modeEdition %}
+                        <h1> Edit this phone </h1>
+                {% else %}
+                    <h1> Create new phone  </h1>
+                {% endif %}
+                 
+                 
+                 </button>
+	{{ form_end(form) }} 
+
+
+</div>
+{% endblock %}

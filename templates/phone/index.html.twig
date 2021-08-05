@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PhoneController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    {% if app.user %}
+
+          <h1 class="my-4">Welcome  {{ app.user.username }} </h1>
+          
+
+        <a href="{{ path('createPhone') }}" class="btn btn-primary mb-3">Create new phone</a>
+
+        <a href="{{ path('manufacturerCreate') }}" class="btn btn-success mb-3">Create new manufacturer</a>
+        
+    {% endif %}
+
+
+
+
+
+    
+
+
+    <h1 class="mx-auto"> All disponible phones: </h1>
+        <div class="row">
+
+
+        {% for phone in phones %}
+        <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ asset('uploads/images/phones/') }}{{ phone.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Model: {{phone.modelName}}</h5>
+                    <p class="card-text">Description {{phone.description}}</p>
+                    <p class="card-text">Stockage: {{phone.stockage}} GB</p>
+                    <p class="card-text">Price: {{phone.price}} €</p>
+                    <p class="card-text">Manufacturer: {{phone.manufacturer.name}} </p>
+
+                    {# Author #}
+                    <p class="card-text">Author: {{phone.author.username}} </p>
+                   
+                
+                    <small> Release Date: {{phone.createdAt | date('d/m/Y') }} à {{phone.createdAt | date('H:i') }} </small>
+                    <a href="{{ path('showPhone', {id:phone.id}) }}" class="btn btn-primary">Check more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+          
+                                
+ </div>
+</div>
+{% endblock %}
